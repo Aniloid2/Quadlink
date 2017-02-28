@@ -1,0 +1,51 @@
+<html>
+
+
+
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+
+	<script type="text/javascript">
+
+	function get_the_data() {
+		console.log('hi');
+		var quad = document.getElementById("quad_username").value;
+		console.log(quad);
+	    $.ajax({
+	        type: "GET",
+	        data: ({quad}),
+	        dataType: 'json',
+	        url: "/get_connected",
+	        success: function(data){
+	            console.log("Im x axis "+data.x_axis)
+	            console.log("im y azis" + data.y_axis)
+	            console.log(" im z axis" + data.z_axis)
+	        }
+		    });
+		}
+
+
+
+
+	</script>
+
+</head>
+<body>
+
+	<h1> Connect t0 a qyuad <h1>
+
+
+	<input type="text" name="connect_to_quad" id="quad_username">
+
+
+<button onclick="get_the_data()"> Connect </button>
+
+
+
+</body>
+
+
+</html>

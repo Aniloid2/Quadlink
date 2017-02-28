@@ -1,0 +1,23 @@
+
+<html>
+<head>
+</head>
+<body>
+
+	<h1> Create a Quad user <h1>
+
+<form id = "quaduser" enctype="multipart/form-data" method="POST">
+	{%csrf_token %}
+	Quadcopter Name <input type="text" name="quadname">
+    Password <input type="text" name="password">
+    <!-- set type in backend, we know post is from human user creation -->
+
+</form>
+
+
+<button type="submit" form="quaduser"> Submit </button>
+
+
+
+</body>
+</html>

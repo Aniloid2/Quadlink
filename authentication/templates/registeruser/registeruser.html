@@ -1,0 +1,21 @@
+<body>
+
+	<h1> Create a human user <h1>
+
+<form id = "humanuser" enctype="multipart/form-data" method="POST">
+	{%csrf_token %}
+	user <input type="text" name="username">
+    pass <input type="text" name="password">
+    <!-- set type in backend, we know post is from human user creation -->
+
+
+
+</form>
+
+
+<button type="submit" form="humanuser"> Submit </button>
+
+
+
+</body>
+</html>

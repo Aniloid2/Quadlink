@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+	</head>
+
+	<body>
+		<script>
+		function get_the_data() {
+		console.log('hi');
+
+		var quad = document.getElementById("quad_username").value;
+
+		var databaseURL = "https://quadlink-c80dc.firebaseio.com"
+
+		var folder = quad.concat(databaseURL)
+		console.log(folder)
+
+
+		console.log(quad)
+
+			var config = {
+			apiKey: "AIzaSyA1He_lYsMphHl41rpQSEUfTeYIj976Oz4",
+			authDomain: "quadlink-c80dc.firebaseapp.com",
+			databaseURL: folder,
+			storageBucket: "quadlink-c80dc.appspot.com",
+			};
+
+
+			firebase.initializeApp(config);
+
+			const preObject = document.getElementById('object');
+
+			const dbRefObject = firebase.database().ref().child(quad);
+			dbRefObject.on('value', snap => console.log(snap.val()));
+
+
+}
+
+		</script>
+
+		<h1>Go</h1>
+
+
+			<h1> Connect t0 a qyuad <h1>
+
+
+	<input type="text" name="connect_to_quad" id="quad_username">
+
+
+<button onclick="get_the_data()"> Connect </button>
+
+	</body>
+</html>
+
