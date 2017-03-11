@@ -55,9 +55,13 @@ def registerquad(request):
 				print (e)
 
 			payload = {
-				'x_axis': quaduser.get_x_axis(),
-				'y_axis': quaduser.get_y_axis(),
-				'z_axis': quaduser.get_z_axis(),
+				'pitch': quaduser.get_pitch(),
+				'roll': quaduser.get_roll(),
+				'yaw': quaduser.get_yaw(),
+				'temp': quaduser.get_temp(),
+				'x_acc':quaduser.get_acc_x(),
+				'y_acc':quaduser.get_acc_y(),
+				'z_acc':quaduser.get_acc_z()
 			}
 
 			print (payload)

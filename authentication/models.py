@@ -94,34 +94,69 @@ class QuadUser(models.Model):
 		related_name = 'quad_profile'
 		)
 
-	x_axis = models.PositiveIntegerField(
-		verbose_name = "x_axis",
+	pitch = models.PositiveIntegerField(
+		verbose_name = "pitch",
 		default = 0,
 		editable = True,
 		)
 
-	y_axis = models.PositiveIntegerField(
-		verbose_name = "y_axis",
+	roll = models.PositiveIntegerField(
+		verbose_name = "roll",
 		default = 0,
 		editable = True,
 		)
 
-	z_axis = models.PositiveIntegerField(
-		verbose_name = "z_axis",
+	yaw = models.PositiveIntegerField(
+		verbose_name = "yaw",
 		default = 0,
 		editable = True,
 		)
 
-	def get_x_axis(self):
+	temp = models.PositiveIntegerField(
+		verbose_name = "temp",
+		default = 0,
+		editable = True,
+		)
+
+	acc_x = models.PositiveIntegerField(
+		verbose_name = "acc_x",
+		default = 0,
+		editable = True,
+		)
+
+	acc_y = models.PositiveIntegerField(
+		verbose_name = "acc_y",
+		default = 0,
+		editable = True,
+		)
+
+	acc_z = models.PositiveIntegerField(
+		verbose_name = "acc_z",
+		default = 0,
+		editable = True,
+		)
+
+	def get_pitch(self):
 		print ('im here')
-		return self.x_axis
+		return self.pitch
 
-	def get_y_axis(self):
-		return self.y_axis
+	def get_roll(self):
+		return self.roll
 
-	def get_z_axis(self):
-		return self.z_axis
+	def get_yaw(self):
+		return self.yaw
 
+	def get_temp(self):
+		return self.temp
+
+	def get_acc_x(self):
+		return self.acc_x
+
+	def get_acc_y(self):
+		return self.acc_y
+
+	def get_acc_z(self):
+		return self.acc_x
 
 	class Meta:
 		managed = True

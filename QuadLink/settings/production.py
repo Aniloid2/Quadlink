@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')xxauixsk%(%n_a%%7(fsl3kcplh25#o@%ah4ie2)#rhk^we_w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['quadlink.herokuapp.com']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'realtimeup',
     'registeruser',
     'registerquad',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'QuadLink.urls'
+
+PARENT_HOST ="quadlink.herokuapp.com"
 
 TEMPLATES = [
     {
@@ -78,9 +81,13 @@ WSGI_APPLICATION = 'QuadLink.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'quadlink',
+        'USER': 'b8d0b146736efa',
+        'PASSWORD': '22c04861',
+        'HOST': 'eu-cdbr-azure-north-e.cloudapp.net',
+        'PORT': '3306'
     }
 }
 
@@ -121,7 +128,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static/"),
+   # '/var/www/static/',
+]
 
 
 AUTHENTICATION_BACKENDS = (
@@ -132,3 +144,30 @@ AUTHENTICATION_BACKENDS = (
 )
 
 AUTH_USER_MODEL = 'authentication.MyUser'
+
+
+
+
+AWS_STORAGE_BUCKET_NAME = 'quadlink'
+# AWS_ACCESS_KEY_ID = ''
+# AWS_SECRET_ACCESS_KEY = ''
+
+# Tell django-storages that when coming up with the URL for an item in S3 storage, keep
+# it simple - just use this domain plus the path. (If this isn't set, things get complicated).
+# This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
+# We also use it in the next setting.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# This is used by the `static` template tag from `static`, if you're using that. Or if anything else
+# refers directly to STATIC_URL. So it's safest to always set it.
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+# Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
+# you run `collectstatic`).
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
+
+    # AKIAI64UL6CG4HUT6CMA
+
+    # PSukJiZMb7Ha2lMpTUNO/86jUyXghM0Bsz4vzMYQ
