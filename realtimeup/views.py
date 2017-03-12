@@ -10,7 +10,7 @@ from authentication.models import QuadUser, MyUser
 def realtimeup(request):
 	if request.method == "GET":
 		if request.user.is_authenticated:
-			return render(request, "userUpdate/realtimeup.html")
+			return render(request, "userUpdate/piramid.html")
 		else:
 			return HttpResponseRedirect('/login/')
 

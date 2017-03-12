@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+
+{% load static from staticfiles %}
+
+
+<html>
+<head>
+<title>My first Three.js app</title>
+
+
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+<script type="text/javascript" src="{% static 'js/Get_the_data.js' %}"></script>
+<script type="text/javascript" src="{% static js/linksObj.js %}"></script>
+
+<script type="text/javascript" src="{% static js/canvasjs.min.js %}"></script>
+<script type="text/javascript" src="{% static js/updategraph.js %}"></script>
+</head>
+<body>
+
+
+<script src="{% static js/three.min.js %}"></script>
+
+<h1>THE HECTOR</h1>
+<!-- http://10.14.38.105:8080/video -->
+<!-- http://10.14.38.105:8080/audio.wav -->
+
+
+<img id='video_stream' style="-webkit-user-select: none;" src="http://10.14.38.105:8080/video" width="554" height="416">
+<video controls="" autoplay="" name="media"><source id="audio_stream" src="http://10.14.38.105:8080/audio.wav" type="audio/x-wav"></video>
+<input type="text" name="connect_to_quad" id="quad_username">
+
+
+
+<script>
+
+var scene, camera, renderer, pyramid, pitch, roll, yaw
+var btn = document.createElement("BUTTON");
+            var t = document.createTextNode("CLICK ME");     
+            btn.appendChild(t);    
+            document.body.appendChild(btn);
+
+
+
+
+scene = new THREE.Scene();
+scene.background = new THREE.Color( 0xffffff );
+camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 10000);
+renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth/2, window.innerHeight/2);
+document.body.appendChild(renderer.domElement);
+var pyramidgeometry = new THREE.CylinderGeometry(0, 300, 800, 4,20, false);
+var pyramidmaterial = new THREE.MeshBasicMaterial({wireframe: true, color: 0x0000ff});
+pyramid = new THREE.Mesh(pyramidgeometry, pyramidmaterial);
+pyramid.position.set(0.0,0,0);
+scene.add(pyramid);
+camera.position.z = 1000;        
+
+
+function render() {
+	requestAnimationFrame(render);
+	// pyramid.rotation.x += 0.01; //roll
+	// // // cube.rotation.y += 0.01; //yaw
+	// pyramid.rotation.z += 0.02; //pitch
+	renderer.render(scene, camera);
+};
+render();
+
+
+function animate() {
+	requestAnimationFrame(animate);
+	// console.log(pitch)
+
+	pyramid.rotation.x = roll; //roll
+	pyramid.rotation.y = yaw; //yaw
+	pyramid.rotation.z = pitch;
+
+}
+
+function changeconstants(pitch, roll, yaw) {
+	pitch = pitch
+	roll = roll
+	yaw = yaw
+}
+
+btn.onclick = function() {
+
+
+	var LinkObj = get_the_data()
+	console.log('Linker object', LinkObj.axis)
+	pitch = 0
+	roll = 0
+	yaw = 0
+
+	LinkObj.axis.on('value', function(snapshot) {
+		console.log('value test', snapshot.child('pitch').val())
+		pitch = snapshot.child('pitch').val()
+		roll = snapshot.child('roll').val()
+		yaw = snapshot.child('yaw').val()
+		console.log(yaw)
+		changeconstants(pitch,roll,yaw)
+	});
+	console.log('im calling ')
+	callable(LinkObj)
+
+	animate()
+}
+
+// event lisseners, call a function, define pitch = value and that should override the global one
+</script>
+
+
+
+<!-- <h1 id="po" name="x_value_var"></h1>
+<h1 id="inside"></h1> -->
+<!-- <input type="text" name="connect_to_quad" id="quad_username"> -->
+<div id="chartContainer" style="height: 300px; width:100%;">
+	</div>
+
+
+
+<!-- <div id="chartContainer" style="height: 300px; width:100%;">
+	</div> -->
+
+</body>
+</html>
