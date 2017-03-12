@@ -10,7 +10,7 @@ from authentication.models import HumanUser, MyUser
 
 def registeruser(request):
 	if request.method == "GET":
-		print ('got request to send quadform')
+		print ('got request to send usernform')
 		return render(request, 'registeruser/registeruser.html')
 
 	if request.method == "POST":
@@ -29,13 +29,14 @@ def registeruser(request):
 			print ('creating account')
 			try :
 				user = MyUser.objects.create_user(username = username, type_user = type_user , password = password)
-				pass
+				print ('MyUser has been created')
 			except Exception as e:
 				print (e)
 
-			print ('MyUser has been created')
+			
 			try:
 				HumanUser.objects.create(user = user)
+				print ('Human user created')
 			except Exception as e:
 				print (e)
 
