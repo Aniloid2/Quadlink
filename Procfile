@@ -1,1 +1,1 @@
-web: gunicorn Quadlink.wsgi --log-file -
+web: gunicorn QuadLink.wsgi --log-file -
