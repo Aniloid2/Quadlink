@@ -1,1 +1,1 @@
-web: gunicorn Rayse.wsgi --log-file -
+web: gunicorn quadlink.wsgi --log-file -
