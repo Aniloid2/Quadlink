@@ -7,7 +7,11 @@
 <head>
 <title>My first Three.js app</title>
 
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
 <script type="text/javascript" src="{% static 'js/Get_the_data.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/linksObj.js' %}"></script>
@@ -20,14 +24,67 @@
 
 <script src="{% static 'js/three.min.js' %}"></script>
 
-<h1>THE HECTOR</h1>
+<div class="jumbotron text-center">
+  <h2>THE HECTOR</h2>
+  <!-- <p>Enter the username of a registered quadcopter below!</p>  -->
+</div>
 <!-- http://10.14.38.105:8080/video -->
 <!-- http://10.14.38.105:8080/audio.wav -->
+<div class="container">
+	<p>Enter quadcopter username</p>
+  <div class="row">
+
+  	<div class="col-sm-4">
+	  	<input type="text" name="connect_to_quad" id="quad_username" style="width:100%">
+	</div>
+	<div class="col-sm-2">
+	  	<div id="input_container">
+	  	</div>
+	</div>
+  </div>
+</div>
 
 
-<img id='video_stream' style="-webkit-user-select: none;" src="http://www.fullredneck.com/wp-content/uploads/2016/04/Funny-Russia-Meme-20.jpg" width="554" height="416">
-<video controls="" autoplay="" name="media"><source id="audio_stream" src="http://10.14.38.105:8080/audio.wav" type="audio/x-wav"></video>
-<input type="text" name="connect_to_quad" id="quad_username">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+    	<div id="3d_container">
+ 
+	    </div>
+        
+    </div>
+
+    <div class="col-sm-6">
+ 		<div class="row">
+ 			<div class="row">
+ 			<div class="col-sm-12">
+		        <div id="video_con">
+					<img id='video_stream' style="-webkit-user-select: none;" src="http://www.fullredneck.com/wp-content/uploads/2016/04/Funny-Russia-Meme-20.jpg" width="554" height="416">
+				</div>
+		    </div>
+			</div>
+
+
+		    <div class="row">
+
+		    <div class="col-sm-12">
+		    	<div class="audio_con" style="text-align:center">
+			        <video controls="" autoplay="" name="media"><source id="audio_stream" src="" type="audio/x-wav"></video>
+		    	</div>
+		    </div>
+		   	</div>
+
+
+        </div>
+    </div> 
+  </div>
+  <div class="row">
+  	<div class="col-sm-12">
+	  	<div id="chartContainer" style="height: 300px; width:100%;">
+		</div>
+	</div>
+	</div>
+</div>
 
 
 
@@ -37,7 +94,7 @@ var scene, camera, renderer, pyramid, pitch, roll, yaw
 var btn = document.createElement("BUTTON");
             var t = document.createTextNode("CLICK ME");     
             btn.appendChild(t);    
-            document.body.appendChild(btn);
+            document.getElementById('input_container').appendChild(btn);
 
 
 
@@ -46,9 +103,9 @@ scene = new THREE.Scene();
 scene.background = new THREE.Color( 0xffffff );
 camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 10000);
 renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth/2, window.innerHeight/2);
-document.body.appendChild(renderer.domElement);
-var pyramidgeometry = new THREE.CylinderGeometry(0, 300, 800, 4,20, false);
+renderer.setSize(500, 400);
+document.getElementById('3d_container').appendChild(renderer.domElement);
+var pyramidgeometry = new THREE.CylinderGeometry(0, 400, 900, 4,20, false);
 var pyramidmaterial = new THREE.MeshBasicMaterial({wireframe: true, color: 0x0000ff});
 pyramid = new THREE.Mesh(pyramidgeometry, pyramidmaterial);
 pyramid.position.set(0.0,0,0);
@@ -113,8 +170,8 @@ btn.onclick = function() {
 <!-- <h1 id="po" name="x_value_var"></h1>
 <h1 id="inside"></h1> -->
 <!-- <input type="text" name="connect_to_quad" id="quad_username"> -->
-<div id="chartContainer" style="height: 300px; width:100%;">
-	</div>
+<!-- <div id="chartContainer" style="height: 300px; width:100%;">
+	</div> -->
 
 
 
