@@ -112,11 +112,11 @@ class QuadUser(models.Model):
 		editable = True,
 		)
 
-	temp = models.PositiveIntegerField(
-		verbose_name = "temp",
-		default = 0,
-		editable = True,
-		)
+	# temp = models.PositiveIntegerField(
+	# 	verbose_name = "temp",
+	# 	default = 0,
+	# 	editable = True,
+	# 	)
 
 	acc_x = models.PositiveIntegerField(
 		verbose_name = "acc_x",
@@ -146,8 +146,8 @@ class QuadUser(models.Model):
 	def get_yaw(self):
 		return self.yaw
 
-	def get_temp(self):
-		return self.temp
+	# def get_temp(self):
+	# 	return self.temp
 
 	def get_acc_x(self):
 		return self.acc_x

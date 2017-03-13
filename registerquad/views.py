@@ -55,13 +55,16 @@ def registerquad(request):
 				print (e)
 
 			payload = {
-				'pitch': quaduser.get_pitch(),
-				'roll': quaduser.get_roll(),
-				'yaw': quaduser.get_yaw(),
-				'temp': quaduser.get_temp(),
-				'x_acc':quaduser.get_acc_x(),
-				'y_acc':quaduser.get_acc_y(),
-				'z_acc':quaduser.get_acc_z()
+				'axis' : {
+					'pitch': quaduser.get_pitch(),
+					'roll': quaduser.get_roll(),
+					'yaw': quaduser.get_yaw(),
+				},
+				'acceleration': {
+					'x_acc':quaduser.get_acc_x(),
+					'y_acc':quaduser.get_acc_y(),
+					'z_acc':quaduser.get_acc_z(),
+				},
 			}
 
 			print (payload)
