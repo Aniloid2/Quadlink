@@ -42,6 +42,13 @@
 	  	<div id="input_container">
 	  	</div>
 	</div>
+	<div class="col-sm-4">
+		<p>Thrust output</p>
+	</div>
+	<div id="thrust_cont" class="col=sm-2">
+		<p id="thrust_space"></p>
+	</div>
+	</div>
   </div>
 </div>
 
@@ -171,7 +178,10 @@ btn.onclick = function() {
 
 	LinkObj.thrust.on('value', function(snapshot) {
 		console.log('value test', snapshot.val())
+
 	});
+
+
 
 	animate()
 }

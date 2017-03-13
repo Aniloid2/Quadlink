@@ -5,6 +5,8 @@ function callable_thrust(LinkObj) {
 
 		var dps = []; // dataPoints
 
+		var thrust_lable = document.getElementById('thrust_lable')
+
 		var chart = new CanvasJS.Chart("chartContainerthrust",{
 			title :{
 				text: "Live Thrust as percentage"
@@ -21,6 +23,7 @@ function callable_thrust(LinkObj) {
 		var dataLength = 250; // number of dataPoints visible at any point
 		var updateChart = function (count, y_value) {
 			console.log(y_value)
+			thrust_lable.innerHTML = y_value
 			count = count || 1;
 			// count is number of times loop runs to generate random dataPoints.
 			console.log(count)
