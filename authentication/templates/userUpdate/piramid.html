@@ -158,11 +158,11 @@ btn.onclick = function() {
 	});
 	console.log('im calling ')
 	callable(LinkObj)
-	// console.log('thrust', LinkObj.thrust)
+	console.log('thrust', LinkObj.thrust)
 
-	// LinkObj.thrust.on('value', function(snapshot) {
-	// 	console.log('value test', snapshot.val())
-	// });
+	LinkObj.thrust.on('value', function(snapshot) {
+		console.log('value test', snapshot.val())
+	});
 
 	animate()
 }
