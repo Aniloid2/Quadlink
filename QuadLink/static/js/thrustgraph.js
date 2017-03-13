@@ -5,7 +5,7 @@ function callable_thrust(LinkObj) {
 
 		var dps = []; // dataPoints
 
-		var thrust_lable = document.getElementById('thrust_lable')
+		var thrust_lable = document.getElementById('thrust_space')
 
 		var chart = new CanvasJS.Chart("chartContainerthrust",{
 			title :{
@@ -23,7 +23,8 @@ function callable_thrust(LinkObj) {
 		var dataLength = 250; // number of dataPoints visible at any point
 		var updateChart = function (count, y_value) {
 			console.log(y_value)
-			// thrust_lable.innerHTML = y_value
+			console.log('thrust as pk', thrust_lable)
+			thrust_lable.innerHTML = y_value + '%'
 			count = count || 1;
 			// count is number of times loop runs to generate random dataPoints.
 			console.log(count)
@@ -63,7 +64,7 @@ function callable_thrust(LinkObj) {
 			thrust = snapshot.val()
 			thrust_as_perc = (thrust - 1000)/10
 			console.log('thrust value', thrust, thrust_as_perc)
-			// thrust_lable.innerHTML = y_value
+			// thrust_lable = thrust_as_perc
 
 
 

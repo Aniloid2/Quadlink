@@ -10,7 +10,7 @@ function get_the_data() {
 		console.log(video.src)
 	}
 
-	function update_audio_ip() {
+	function update_audio_ip(ip) {
 		audio.src = 'http://' + ip +'/audio.wav'
 		console.log(audio.src)
 	}
