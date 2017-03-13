@@ -89,9 +89,11 @@ function get_the_data() {
 
 	const z_acc = firebase.database().ref().child(quad).child('acceleration').child('z_acc')
 
-	var LinkedObj = new links(axis,pitch, roll, yaw, ip_address,acceleration, x_acc,y_acc,z_acc)
-	console.log('Parts of lissener object',LinkedObj.pitch,LinkedObj.roll,LinkedObj.yaw )
+	const thrust = firebase.database().ref().child(quad).child('thrust')
 
+	var LinkedObj = new links(axis,pitch, roll, yaw, ip_address,acceleration, x_acc,y_acc,z_acc, thrust)
+	console.log('Parts of lissener object',LinkedObj.pitch,LinkedObj.roll,LinkedObj.yaw )
+	console.log(thrust)
 	LinkedObj.ip_address.on('value', function(snapshot) {
 		
 		ip = snapshot.val()

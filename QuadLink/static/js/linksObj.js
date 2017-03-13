@@ -1,4 +1,4 @@
-function links(axis,pitch,roll,yaw,ip_address,acceleration,x_acc,y_acc,z_acc) {
+function links(axis,pitch,roll,yaw,ip_address,acceleration,x_acc,y_acc,z_acc, thrust) {
 	this.axis = axis;
 	this.pitch = pitch;
 	this.roll = roll;
@@ -8,6 +8,7 @@ function links(axis,pitch,roll,yaw,ip_address,acceleration,x_acc,y_acc,z_acc) {
 	this.x_acc = x_acc;
 	this.y_acc = y_acc;
 	this.z_acc = z_acc;
+	this.thrust = thrust
 }
 
 
