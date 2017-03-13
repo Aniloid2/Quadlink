@@ -12,6 +12,7 @@ def realtimeup(request):
 	# if request.user.is_authenticated:
 		return render(request, "userUpdate/piramid.html")
 		# else:
+		#hiii
 		# 	return HttpResponseRedirect('/login/')
 
 
