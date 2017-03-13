@@ -65,6 +65,7 @@ def registerquad(request):
 					'y_acc':quaduser.get_acc_y(),
 					'z_acc':quaduser.get_acc_z(),
 				},
+				'thrust':quaduser.get_thrust(),
 			}
 
 			print (payload)

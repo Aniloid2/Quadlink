@@ -136,6 +136,12 @@ class QuadUser(models.Model):
 		editable = True,
 		)
 
+	thrust = models.PositiveIntegerField(
+		verbose_name = "thrust",
+		default = 0,
+		editable = True,
+		)
+
 	def get_pitch(self):
 		print ('im here')
 		return self.pitch
@@ -157,6 +163,8 @@ class QuadUser(models.Model):
 
 	def get_acc_z(self):
 		return self.acc_x
+	def get_thrust(self):
+		return self.thrust
 
 	class Meta:
 		managed = True
